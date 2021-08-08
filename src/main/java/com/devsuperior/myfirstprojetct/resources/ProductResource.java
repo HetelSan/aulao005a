@@ -27,7 +27,7 @@ public class ProductResource {
 	
 	@GetMapping(value = "/{id}")
 	public ResponseEntity<Product> findById(@PathVariable Long id) {
-		Product p1 = productRepository.findById(id);
+		Product p1 = productRepository.findById(id).get();
 		return ResponseEntity.ok().body(p1);
 	}
 }

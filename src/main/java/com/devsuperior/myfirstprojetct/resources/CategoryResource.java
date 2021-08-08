@@ -21,21 +21,13 @@ public class CategoryResource {
 	
 	@GetMapping
 	public ResponseEntity<List<Category>> findAll() {
-		/* o bloco a seguir foi comentado pois as categorias serão obtidas agora do repository
-		List<Category> list = new ArrayList<>();
-		list.add(new Category(1L, "Eletronics"));
-		list.add(new Category(2L, "Books")); 
-		*/
 		List<Category> list = categoryRepository.findAll(); 
 		return ResponseEntity.ok().body(list);
 	}
 	
 	@GetMapping(value = "/{id}")
 	public ResponseEntity<Category> findById(@PathVariable Long id) {
-		/*
-		Category cat = new Category(1L, "Eletronics");
-		*/
-		Category cat = categoryRepository.findById(id);
+		Category cat = categoryRepository.findById(id).get();
 		return ResponseEntity.ok().body(cat);
 	}
 }
